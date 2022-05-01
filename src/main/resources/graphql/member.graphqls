@@ -1,0 +1,30 @@
+schema {
+    query: Query,
+    mutation: Mutation,
+}
+
+type Mutation {
+    registerMember(membersn: Int!, memberid: String!, memberemail: String!, membernumber: String!): Member
+    deleteMember(memberid: String!): Boolean
+}
+
+type Query{
+	findMembers(memberid: String!): Member!
+	allFindMembers: [Member]
+}
+
+
+# 응답 : member
+type Member{
+	membersn: Int
+	memberid: String
+	memberemail : String
+	membernumber : String
+}
+
+input MemberEntity{
+	membersn: Int
+	memberid: String
+	memberemail : String
+	membernumber : String
+}

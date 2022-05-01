@@ -1,0 +1,50 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.heejea.simple'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	// GraphQL
+    //  implementation 'com.graphql-java:graphql-spring-boot-starter:5.0.2'
+    //  implementation 'com.graphql-java:graphql-java-tools:5.2.4'    
+    implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:11.0.0'
+	implementation 'com.graphql-java-kickstart:playground-spring-boot-starter:11.0.0'
+	testImplementation 'com.graphql-java-kickstart:graphql-spring-boot-starter-test:11.0.0'
+    // GraphQl
+    // implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:5.10.0'
+    // implementation 'com.graphql-java:graphiql-spring-boot-starter:5.0.2'
+    // implementation 'com.graphql-java-kickstart:voyager-spring-boot-starter:5.10.0'
+    // implementation 'com.graphql-java-kickstart:graphql-java-tools:5.6.1'
+    
+    // PostgreSQL
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.18'          // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
