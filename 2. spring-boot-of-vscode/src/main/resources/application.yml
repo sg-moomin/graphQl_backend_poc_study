@@ -1,0 +1,16 @@
+spring:
+    profiles:
+        active: local
+
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+               
+
+
+logging:
+    level:
+        '[org.springframework.web]': debug
+        

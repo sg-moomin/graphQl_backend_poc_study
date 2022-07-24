@@ -1,0 +1,21 @@
+schema{
+    query: Query,
+    mutation: Mutation,
+}
+
+type Mutation{
+
+}
+
+type Query{
+    allUsers: [user]
+    findUser(String userId): user
+}
+
+type user{
+    userId: String
+    userEmail: String
+    userMobNo: String
+    userSex: String
+    
+}
