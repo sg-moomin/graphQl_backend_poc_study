@@ -7,8 +7,20 @@ spring:
             ddl-auto: create
         properties:
             hibernate:
-               
-
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        # url: jdbc:mysql://localhost:3306/moominGraph?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+        url: jdbc:mysql://localhost:3306/moominGraph?serverTimezone=UTC&characterEncoding=UTF-8
+        username: root
+        password: 1234
+    flyway:
+        locations: classpath:/db/migration
+        enabled: true
+        baseline-on-migrate: true
+        url: jdbc:mysql://localhost:3306/moominGraph?serverTimezone=UTC&characterEncoding=UTF-8
+        user: root
+        password: 1234
+    
 
 logging:
     level:

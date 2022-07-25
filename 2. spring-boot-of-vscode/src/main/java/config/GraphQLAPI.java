@@ -62,8 +62,8 @@ public class GraphQLAPI {
         .type(
         TypeRuntimeWiring
         .newTypeWiring("Query")
-        .querey("allUsers", querey.allUser())
-        .querey("findUser", querey.findUser())      
+        .dataFetcher("allUsers", querey.allUser())
+        .dataFetcher("findUser", querey.findUser())      
         )
         .build();
     }
