@@ -20,34 +20,41 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.flywaydb:flyway-core'
-	implementation 'org.flywaydb:flyway-mysql'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	// implementation 'org.flywaydb:flyway-core'
+	// implementation 'org.flywaydb:flyway-mysql'
+	// implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	
 	// GraphQl
-	implementation 'org.springframework.boot:spring-boot-starter-graphql'
+	// implementation 'org.springframework.boot:spring-boot-starter-graphql'
 	implementation 'com.graphql-java:graphql-java:11.0'
 	implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
 	implementation 'com.google.guava:guava:26.0-jre'
+
+	//
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+
 	// flyway : sql 형상 관리 
-	implementation 'org.flywaydb:flyway-core:5.2.4'
+	// implementation 'org.flywaydb:flyway-core:5.2.4'
 	// implementation 'com.graphql-java-kickstart:playground-spring-boot-starter:11.0.0'
     // implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:11.0.0'
 	// mysql 
-	runtimeOnly 'mysql:mysql-connector-java'   
+	// runtimeOnly 'mysql:mysql-connector-java'   
 
+	// DB
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
 
-
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// H2 & Spring-boot
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework:spring-webflux'
 	testImplementation 'org.springframework.graphql:spring-graphql-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {

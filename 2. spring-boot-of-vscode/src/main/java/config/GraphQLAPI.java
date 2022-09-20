@@ -5,14 +5,14 @@ import java.net.URL;
 
 import javax.annotation.PostConstruct;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Resources;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
@@ -21,17 +21,17 @@ import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
 import graphql.schema.idl.TypeRuntimeWiring;
-
-import service.userQuery;
+import service.userDataFetcher;
 
 @Component
 public class GraphQLAPI {
     
-    @Autowired userQuery querey; 
+    @Autowired userDataFetcher dataFetcher; 
     
     private GraphQL graphQL;
 
-    @Value("classpath:graphql/user.graphqls")
+    // GraphQL ¼±¾ð
+    @Value("classpath:static/graphql/user.graphqls")
     Resource resource;
 
       // (3)
@@ -62,8 +62,8 @@ public class GraphQLAPI {
         .type(
         TypeRuntimeWiring
         .newTypeWiring("Query")
-        .dataFetcher("allUsers", querey.allUser())
-        .dataFetcher("findUser", querey.findUser())      
+        .dataFetcher("allUsers", dataFetcher.allUser())
+        .dataFetcher("findUser", dataFetcher.findUser())      
         )
         .build();
     }
