@@ -1,0 +1,16 @@
+schema {
+	query: Query,
+	mutation: Mutation,
+}
+
+type Mutation{
+	registerBoard(input: Board!): Board!
+	getBoard(input Board!): Board!
+	
+}
+
+input Board{
+	boardId: String!
+	boardName: String!
+	createDate: String!
+}
