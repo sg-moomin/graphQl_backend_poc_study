@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/profile_tb?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+  initialization-mode: always
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: create
+ 
+  logging:
+   level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          trace
+ 
+graphql:
+  tools:
+    # graphql 파일 위치
+    schema-location-pattern: "**/*.graphqls"
+    # 스키마 확인 기능 사용 시스템 
+    introspection-enabled: true
+  servlet:
+    mapping: /graphql
+    enabled: true
+    cors-enabled: true
+    cors:
+      # 허용 도메인 및 여러 도메인 설정 가능
+      #allowed-origins: http://sg-moomins-dn.graphql.com
+      allowed-origins: http://localhost:8080
+    exception-handlers-enabled: true
+    context-setting: PER_REQUEST_WITH_INSTRUMENTATION
+    async-mode-enabled: true    
+    
