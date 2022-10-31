@@ -17,10 +17,10 @@ import lombok.Setter;
 @Builder
 @Setter
 @Data
-@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
+@Entity(name="board")
 public class Board {
 
 	@Id @GeneratedValue

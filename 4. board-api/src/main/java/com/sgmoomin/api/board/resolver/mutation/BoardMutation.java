@@ -19,6 +19,7 @@ public class BoardMutation implements GraphQLMutationResolver{
 	private Board board;
 	
 	public Board registerBoard(Board board){
+		System.out.println("resgisterBoardService");
 		Board boardSave = boardRepository.save(board.builder()
 				.boardId(board.getBoardId())
 				.boardName(board.getBoardName())

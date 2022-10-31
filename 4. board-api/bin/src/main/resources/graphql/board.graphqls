@@ -1,0 +1,32 @@
+schema {
+	query: Query,
+	mutation: Mutation,
+}
+
+# 변형 후 응답 
+type Mutation{
+	registerBoard(input: BoardEntity): Board
+	updateBoard(input: BoardEntity): Board
+	deleteBoard(input: BoardEntity): Board
+}
+
+# 읽기전용
+type Query{
+	getBoard(input: BoardEntity): Board
+	allGetBoard(input: BoardEntity): [Board]	
+}
+
+
+
+type Board{
+	boardId: String
+	boardName: String
+	createDate: String
+}
+
+input BoardEntity{
+	boardId: String
+	boardName: String
+	createDate: String
+}
+
