@@ -1,0 +1,16 @@
+scalar Long
+
+schema {
+    query: Query,
+}
+ 
+type Query {
+    custList: [cust]
+    cust(custSeq: Long): cust
+}
+ 
+type cust{
+     custSeq: Long
+     buyQty: Long
+     useDist: String
+}

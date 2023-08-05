@@ -16,8 +16,6 @@ import graphql.GraphQL;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -57,9 +55,9 @@ public class GraphqlApiController {
      * cust.graphqls
      *
      * */
-    // @PostMapping("/cust")
-    // public ResponseEntity<Object> getCustQuery(@RequestBody String query) throws Exception {
-    //     graphQL = graphqlProvider.loadSchema(GraphqlSchemaCode.CUST_GRAPHQL.getValue());
-    //     return ResponseEntity.ok(graphqlExecute.GraphQlExecute(graphQL, query).getData());
-    // }
+    @PostMapping("/cust")
+    public ResponseEntity<Object> getCustQuery(@RequestBody String query) throws Exception {
+        graphQL = graphqlProvider.loadSchema(GraphqlSchemaCode.CUST_GRAPHQL.getValue());
+        return ResponseEntity.ok(graphqlExecute.GraphQlExecute(graphQL, query).getData());
+    }
 }

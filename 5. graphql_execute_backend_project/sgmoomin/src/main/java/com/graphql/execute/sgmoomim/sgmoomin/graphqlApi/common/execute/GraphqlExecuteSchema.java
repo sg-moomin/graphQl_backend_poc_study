@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.IOException;
 
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
 
+import com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.api.contract.schemaLoad.ContractSchemaLoad;
+import com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.api.cust.schemaLoad.CustSchemaLoad;
 import com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.common.code.GraphqlErrorCode;
 import com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.common.code.GraphqlSchemaCode;
-import com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.contract.schemaLoad.ContractSchemaLoad;
 
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
@@ -16,17 +18,23 @@ import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
 
+@Component
 public class GraphqlExecuteSchema {
     private final ContractSchemaLoad contractSchema;
+    private final CustSchemaLoad custSchemaLoad;
  
-    public GraphqlExecuteSchema(ContractSchemaLoad contractSchema){
+    public GraphqlExecuteSchema(ContractSchemaLoad contractSchema, CustSchemaLoad custSchemaLoad){
         this.contractSchema = contractSchema;
+        this.custSchemaLoad = custSchemaLoad;
     }
  
     /*
     * 스키마 파일(graphqls)을 load하는 로직
     * */
     public GraphQL loadGraphqlSchema(Resource resource, String mappingUrlValue) throws IOException{
+        System.out.println("resource" + resource);
+        System.out.println("mappingUrlValue" + mappingUrlValue);
+        
         File schemaFile = resource.getFile();
         TypeDefinitionRegistry typeDefinitionRegistry = new SchemaParser().parse(schemaFile);
         RuntimeWiring buildRuntimeWiring = this.getRuntimeWiring(mappingUrlValue);
@@ -42,7 +50,7 @@ public class GraphqlExecuteSchema {
      * */
     public RuntimeWiring getRuntimeWiring(String mappingUrlValue){
         if(mappingUrlValue == GraphqlSchemaCode.CUST_GRAPHQL.getValue()){
-            return null;
+            return custSchemaLoad.buildContractSchema();
         } else if (mappingUrlValue == GraphqlSchemaCode.CONTRACT_GRAPHQL.getValue()) {
             return contractSchema.buildContractSchema();
         } else {

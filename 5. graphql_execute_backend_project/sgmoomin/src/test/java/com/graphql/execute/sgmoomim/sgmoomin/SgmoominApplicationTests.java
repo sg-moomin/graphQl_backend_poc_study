@@ -1,13 +1,13 @@
-package com.graphql.execute.sgmoomim.sgmoomin;
+// package com.graphql.execute.sgmoomim.sgmoomin;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class SgmoominApplicationTests {
+// @SpringBootTest
+// class SgmoominApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }

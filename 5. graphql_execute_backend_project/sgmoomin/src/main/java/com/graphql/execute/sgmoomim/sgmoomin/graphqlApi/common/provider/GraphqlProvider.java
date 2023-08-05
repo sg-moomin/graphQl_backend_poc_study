@@ -3,12 +3,14 @@ package com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.common.provider;
 import java.io.IOException;
 
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
 
 import com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.common.code.GraphqlSchemaCode;
 import com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.common.execute.GraphqlExecuteSchema;
 
 import graphql.GraphQL;
 
+@Component
 public class GraphqlProvider {
     private GraphqlExecuteSchema graphqlExecuteSchema;
  
@@ -20,7 +22,8 @@ public class GraphqlProvider {
     /**
      * mapping url에 따른 스키마 load -> 로직 처리를 위해
      * */
-    public GraphQL loadSchema(String mappingUrlValue) throws IOException {
+    public GraphQL 
+    loadSchema(String mappingUrlValue) throws IOException {
         return graphqlExecuteSchema.loadGraphqlSchema(this.getResource(mappingUrlValue), mappingUrlValue);
     }
  

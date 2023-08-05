@@ -1,14 +1,13 @@
-package com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.contract.entity;
+package com.graphql.execute.sgmoomim.sgmoomin.graphqlApi.api.contract.entity;
 
 
-import javax.persistence.Id;
+// import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.NoArgsConstructor;
 
 
 
@@ -17,9 +16,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class contract {
+public class Contract {
 
-    @Id
+    // @Id
     private Long prodSeq;
     private String prodName;
 
